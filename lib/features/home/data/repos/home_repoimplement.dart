@@ -8,24 +8,26 @@ import 'package:dio/dio.dart';
 class HomeRepoimplement implements HomeRepo {
   final Apiservice apiservice;
 
-  HomeRepoimplement( this.apiservice);
+  HomeRepoimplement(this.apiservice);
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await apiservice.get(
-          endpoint:
-              'volumes?Filtering=free-ebooks&q=subject:programming');
+          endpoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
       List<BookModel> books = [];
       for (var item in data['items']) {
+        //here is parsing
         books.add(BookModel.fromJson(item));
       }
       return right(books);
     } catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
-      }return left(ServerFailure(e.toString()));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
+
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
@@ -40,7 +42,8 @@ class HomeRepoimplement implements HomeRepo {
     } catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
-      }return left(ServerFailure(e.toString()));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
