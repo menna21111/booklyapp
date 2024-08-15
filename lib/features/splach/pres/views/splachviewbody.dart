@@ -1,6 +1,8 @@
+import 'package:booklyapp/core/utls/approuter.dart';
 import 'package:booklyapp/core/utls/assets.dart';
-import 'package:booklyapp/features/home/pres/views/homeview.dart';
+
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'widgets/slidingtext.dart';
 
@@ -21,8 +23,6 @@ class _SplachviewbodyState extends State<Splachviewbody>
     initanimation();
     navigatetohome();
   }
-
- 
   @override
   void dispose() {
     super.dispose();
@@ -48,11 +48,11 @@ class _SplachviewbodyState extends State<Splachviewbody>
         Tween<Offset>(begin: const Offset(0, 2), end: const Offset(0, 0))
             .animate(animationController);
     animationController.forward();
-  } void navigatetohome() {
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Homeview()));
-    });
   }
 
+  void navigatetohome() {
+    Future.delayed(Duration(seconds: 2), () {
+      GoRouter.of(context).push(Approuter.homescreen);
+    });
+  }
 }

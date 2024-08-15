@@ -9,8 +9,9 @@ class Apiservice {//wraper as method
   Apiservice(this._dio);
   Future<Map<String, dynamic>> get({required String endpoint}) async {//الليراجع من الداتا ماب 
     var response = await _dio.get('$_baseUrl$endpoint');
-    return response.data;
-    print(response.data);
+     print(response.data);
     log(response.data);
+    return response.data;
+   
   }
 }

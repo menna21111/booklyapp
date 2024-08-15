@@ -1,27 +1,44 @@
+import 'package:booklyapp/core/utls/styles.dart';
+import 'package:booklyapp/features/home/pres/views/widgets/customhorizantallist.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widget/customerormessage.dart';
-import '../../manager/featuredbook_cubit/featured_books_cubit.dart';
+import 'CustomAppBAR.dart';
+import 'bestsellerlist.dart';
 
 class HomeviewBody extends StatelessWidget {
   const HomeviewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
-        builder: (context, state) {
-      if (state is FeaturedBooksSuccess) {
-        return Column(
-          children: [Text('dddddddddddddddddddd')],
-        );
-      } else if (state is FeaturedBooksFailure) {
-        return CustomErorMessage(
-          erormessage: state.errMessage,
-        );
-      } else {
-        return Center(child: CircularProgressIndicator());
-      }
-    });
+    return const CustomScrollView(
+      slivers: [SliverToBoxAdapter(child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          CustomAppBar(),
+          Customhorizantallist(),
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text(
+                  'Best seller',
+                  style: Styles.styles18,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ) ,)
+    ,SliverToBoxAdapter(child:Padding(
+      padding: EdgeInsets.symmetric(horizontal:  20,),
+      child: Bestsellerlist(),
+    ) ,)],
+    );
+
   }
 }
