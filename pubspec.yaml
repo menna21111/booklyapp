@@ -8,6 +8,7 @@ environment:
   sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
+  url_launcher: ^6.3.0
   google_fonts: ^4.0.0  # Removed duplicate
   awesome_icons: ^1.1.0
   cached_network_image: ^3.2.3
@@ -21,7 +22,7 @@ dependencies:
   font_awesome_flutter: ^10.2.1
   get_it: ^7.2.0
   go_router: ^5.2.4
-  url_launcher: ^6.1.7
+  
 
 dev_dependencies:
   flutter_lints: ^2.0.0

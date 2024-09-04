@@ -28,9 +28,9 @@ class BookModel extends Equatable {
         selfLink: json['selfLink'] as String?,
         volumeInfo:
             VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
-        saleInfo: json['saleInfo'] == null
-            ? null
-            : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
+           saleInfo: json['saleInfo'] != null
+        ? SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>)
+        : null,
         accessInfo: json['accessInfo'] == null
             ? null
             : AccessInfo.fromJson(json['accessInfo'] as Map<String, dynamic>),
@@ -84,7 +84,7 @@ class VolumeInfo extends Equatable {
   final bool? allowAnonLogging;
   final String? contentVersion;
   final PanelizationSummary? panelizationSummary;
-  final ImageLinks? imageLinks;
+  final ImageLinks ?imageLinks;
   final String? language;
   final String? previewLink;
   final String? infoLink;
@@ -139,9 +139,9 @@ class VolumeInfo extends Equatable {
             ? null
             : PanelizationSummary.fromJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks: json['imageLinks'] == null
-            ? null
-            : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+       imageLinks: json['imageLinks'] is Map<String, dynamic> 
+            ? ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>)
+            : null,
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,

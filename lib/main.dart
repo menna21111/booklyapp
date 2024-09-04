@@ -29,7 +29,7 @@ class Booklyapp extends StatelessWidget {
               ..fetchFeaturedBooks()), //after provide do method of fetch .. meen after do and single . mean return
         BlocProvider(
             create: (context) =>
-                NewsetBooksCubit(getit.get<HomeRepoimplement>()))
+                NewsetBooksCubit(getit.get<HomeRepoimplement>())..fetchNewestBooks())
       ],
       child: MaterialApp.router(
         routerConfig: Approuter.router,
